@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Notes
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/base/jquery-ui.css"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+  %body
+    %header
+      %h1
+        Notes
+      %input#btn-addNote{type: "button", value: "Add Note"}
+
+    = yield
