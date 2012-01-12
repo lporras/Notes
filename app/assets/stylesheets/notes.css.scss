@@ -51,7 +51,8 @@ input[type="button"]:hover {
 /* Postick's button "delete" */
 .delete {
   cursor:pointer;
-  font-size:120%;
+  font-size:80%;
+  margin-left: 3px;
 }
 
 
@@ -59,18 +60,27 @@ input[type="button"]:hover {
   border:1px solid gray;
   width:200px;
   height:200px;
+  margin: 10px 5px;
   padding:4px;
   font-size:85%;
+  float: left;
   background:#FFFC7F;
   -moz-box-shadow:2px 2px 2px #999999;
   -webkit-box-shadow:2px 2px 2px #999999;
   box-shadow:2px 2px 2px #999999;
-  position:absolute;
 }
 
 .toolbar {
-  text-align:right;
   font-weight:bold;
+}
+
+.toolbar .title{
+  border: 1px solid transparent;
+  cursor: pointer;
+  float: left;
+  height: 15px;
+  overflow: hidden;
+  width: 92%;
 }
 
 /* Content to be editable inside the postick */
@@ -86,6 +96,6 @@ input[type="button"]:hover {
   text-shadow: 1px 1px 0px white;
 }
 
-.editable:hover {
+.editable:hover, .title:hover {
   border:1px dotted gray;
 }

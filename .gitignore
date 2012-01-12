@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.rvmrc
+.DS_Store
+/coverage
+.sass-cache/
+public/system

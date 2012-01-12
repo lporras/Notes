@@ -1,55 +1,29 @@
 #!/usr/bin/env bash
 
-# This is an RVM Project .rvmrc file, used to automatically load the ruby
-# development environment upon cd'ing into the directory
+#rvm use ruby-1.9.2-p290@invoice-tracker
 
-# First we specify our desired <ruby>[@<gemset>], the @gemset name is optional.
-environment_id="ruby-1.9.2-p290@notes"
+ruby_version="ruby-1.9.2-p290"
+gemset_name="notes"
 
-#
-# Uncomment following line if you want options to be set only for given project.
-#
-# PROJECT_JRUBY_OPTS=( --1.9 )
+ok="\033[10;32m"
+warn="\033[1;31m"
+reset="\033[0m"
 
-#
-# First we attempt to load the desired environment directly from the environment
-# file. This is very fast and efficient compared to running through the entire
-# CLI and selector. If you want feedback on which environment was used then
-# insert the word 'use' after --create as this triggers verbose mode.
-#
-if [[ -d "${rvm_path:-$HOME/.rvm}/environments" \
-  && -s "${rvm_path:-$HOME/.rvm}/environments/$environment_id" ]]
-then
-  \. "${rvm_path:-$HOME/.rvm}/environments/$environment_id"
+if rvm list strings | grep -q "${ruby_version}" ; then
 
-  if [[ -s "${rvm_path:-$HOME/.rvm}/hooks/after_use" ]]
-  then
-    . "${rvm_path:-$HOME/.rvm}/hooks/after_use"
+  # Load or create the specified environment
+  if [[ -d "${rvm_path:-$HOME/.rvm}/environments" \
+    && -s "${rvm_path:-$HOME/.rvm}/environments/${ruby_version}@${gemset_name}" ]] ; then
+    \. "${rvm_path:-$HOME/.rvm}/environments/${ruby_version}@${gemset_name}"
+    echo -e "${ok}Using the ${gemset_name} gemset${reset}"
+  else
+    echo -e "${ok}The ${gemset_name} gemset does not exist, creating ${ruby_version}@${gemset_name} gemset${reset}"
+    rvm --create "${ruby_version}@${gemset_name}"
   fi
+
 else
-  # If the environment file has not yet been created, use the RVM CLI to select.
-  if ! rvm --create use  "$environment_id"
-  then
-    echo "Failed to create RVM environment '${environment_id}'."
-    exit 1
-  fi
+
+  # Notify the user to install the desired interpreter before proceeding.
+  echo -e "${warn}${ruby_version} was not found, please run 'rvm install ${ruby_version}' and then cd back into the project directory.${reset}"
+
 fi
-
-#
-# If you use an RVM gemset file to install a list of gems (*.gems), you can have
-# it be automatically loaded. Uncomment the following and adjust the filename if
-# necessary.
-#
-# filename=".gems"
-# if [[ -s "$filename" ]]
-# then
-#   rvm gemset import "$filename" | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
-# fi
-
-# If you use bundler, this might be useful to you:
-# if command -v bundle && [[ -s Gemfile ]]
-# then
-#   bundle
-# fi
-
-

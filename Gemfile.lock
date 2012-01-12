@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/thoughtbot/shoulda-matchers.git
+  revision: 25c2623bb9d96cf6a446ecc141fdfefe5c4860fa
+  specs:
+    shoulda-matchers (1.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -29,7 +35,10 @@ GEM
       activesupport (= 3.1.3)
     activesupport (3.1.3)
       multi_json (~> 1.0)
+    ansi (1.4.1)
+    archive-tar-minitar (0.5.2)
     arel (2.2.1)
+    backbone-support (0.0.1)
     builder (3.0.0)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -38,9 +47,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
+    columnize (0.3.5)
     diff-lcs (1.1.3)
+    ejs (1.0.0)
     erubis (2.7.0)
-    execjs (1.2.9)
+    execjs (1.2.12)
       multi_json (~> 1.0)
     factory_girl (2.3.2)
       activesupport
@@ -60,6 +71,11 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.3)
+    json_spec (0.7.0)
+      multi_json (~> 1.0.0)
+      rspec (~> 2.0)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -84,6 +100,10 @@ GEM
       activesupport (= 3.1.3)
       bundler (~> 1.0)
       railties (= 3.1.3)
+    rails-backbone (0.5.3)
+      coffee-script (~> 2.2.0)
+      ejs (~> 1.0.0)
+      rails (~> 3.1.0.rc5)
     railties (3.1.3)
       actionpack (= 3.1.3)
       activesupport (= 3.1.3)
@@ -107,12 +127,27 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.7.0)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
     sass (3.1.11)
     sass-rails (3.1.5)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
+    shoulda (2.11.3)
+    simplecov (0.5.4)
+      multi_json (~> 1.0.3)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -123,6 +158,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    turn (0.8.2)
+      ansi (>= 1.2.2)
     tzinfo (0.3.31)
     uglifier (1.1.0)
       execjs (>= 0.3.0)
@@ -132,13 +169,21 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  backbone-support
   coffee-rails (~> 3.1.1)
   factory_girl_generator (>= 0.0.1)
   factory_girl_rails (>= 1.0.1)
   haml-rails (>= 0.3.4)
   jquery-rails (>= 0.2.7)
+  json_spec
   rails (= 3.1.3)
+  rails-backbone (= 0.5.3)
   rspec-rails (>= 2.5.0)
+  ruby-debug19
   sass-rails (~> 3.1.5)
+  shoulda
+  shoulda-matchers!
+  simplecov (= 0.5.4)
   sqlite3
+  turn (= 0.8.2)
   uglifier (>= 1.0.3)

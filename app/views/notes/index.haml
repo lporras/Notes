@@ -1,1 +1,5 @@
 #board
+
+= content_for :javascript do
+  :javascript
+    NotesApp.init(#{@notes.to_json})
