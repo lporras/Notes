@@ -5,6 +5,8 @@ describe Note do
   describe "Mass Assignment" do
     it { should allow_mass_assignment_of(:title) }
     it { should allow_mass_assignment_of(:content) }
+    it { should allow_mass_assignment_of(:left) }
+    it { should allow_mass_assignment_of(:top) }
   end
 
   describe "Methods" do
@@ -14,7 +16,7 @@ describe Note do
       context "when invoking with no params" do
         let(:json){ note.to_json }
         it "should return a json with just id, title and content" do
-          json.should be_json_eql( %({"id":"#{note.id}","title":"#{note.title}", "content":"#{note.content}" }) )
+          json.should be_json_eql( note.to_json(:only => [:id, :content, :title, :left, :top]) )
         end
       end
       context "when invoking with options" do

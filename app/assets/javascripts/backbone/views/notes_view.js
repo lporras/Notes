@@ -4,22 +4,41 @@
     className: "postick",
 
     events: {
-      "blur .title"  : "updateTitle",
-      "blur .editable"   : "updateContent",
+      "blur .title"       : "updateTitle",
+      "blur .editable"    : "updateContent",
       "click span.delete" : "delete"
     },
 
     initialize: function(){
-      _.bindAll(this, 'render', 'updateTitle', 'updateContent', 'leave', 'delete');
+      _.bindAll(this, 'render', 'updateTitle', 'updateContent', 'update', 'leave', 'delete');
       this.model.bind('change', this.render);
       this.model.bind('destroy', this.leave);
       this.template = _.template($('#note-template').html());
+      $(this.el).draggable({
+        cancel: '.editable, .title, .delete',
+        "zIndex": 3000,
+        "stack" : '.postick'
+      });
+      $(this.el).bind("dragstop", this.update);
     },
 
     render: function(){
       var renderedContent = this.template(this.model.toJSON());
-      $(this.el).html(renderedContent);
+      var $el = $(this.el);
+      $el.css({'top': this.model.get('top'), 'left': this.model.get('left')});
+      $el.html(renderedContent);
       return this;
+    },
+
+    update: function(){
+      var $el = $(this.el);
+      var $title = this.$('.title');
+      var $content = this.$('.editable');
+      this.model.save({ title: $title.html(),
+                        content: $content.html(),
+                        left: $el.css('left'),
+                        top: $el.css('top')
+                      });
     },
 
     updateTitle: function(){

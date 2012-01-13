@@ -12,6 +12,8 @@ FactoryGirl.define do
   factory :note do
     title
     content
+    left "0px"
+    top "47px"
   end
 
 end

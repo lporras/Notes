@@ -3,7 +3,9 @@
   NotesApp.Models.Note = Backbone.Model.extend({
     defaults: {
       "title"   : "",
-      "content" : ""
+      "content" : "",
+      "left"    : "0px",
+      "top"     : "47px"
     }
   });
 

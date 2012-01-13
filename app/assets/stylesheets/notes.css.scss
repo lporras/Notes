@@ -63,11 +63,12 @@ input[type="button"]:hover {
   margin: 10px 5px;
   padding:4px;
   font-size:85%;
-  float: left;
+  /*float: left;*/
   background:#FFFC7F;
   -moz-box-shadow:2px 2px 2px #999999;
   -webkit-box-shadow:2px 2px 2px #999999;
   box-shadow:2px 2px 2px #999999;
+  position:absolute;
 }
 
 .toolbar {
