@@ -4,28 +4,35 @@
     className: "postick",
 
     events: {
-      "blur .title"       : "updateTitle",
-      "blur .editable"    : "updateContent",
+      "blur .title"       : "update",
+      "blur .editable"    : "update",
       "click span.delete" : "delete"
     },
 
     initialize: function(){
-      _.bindAll(this, 'render', 'updateTitle', 'updateContent', 'update', 'leave', 'delete');
+      _.bindAll(this, 'render', 'update', 'leave', 'delete');
       this.model.bind('change', this.render);
       this.model.bind('destroy', this.leave);
       this.template = _.template($('#note-template').html());
-      $(this.el).draggable({
+      var $el = $(this.el);
+      var this_view = this;
+      $el.draggable({
         cancel: '.editable, .title, .delete',
         "zIndex": 3000,
-        "stack" : '.postick'
+        "stack" : '.postick',
+        stop: this_view.update
+      }).droppable({
+        tolerance: 'touch',
+        over: this_view.update,
+        out: this_view.update
       });
-      $(this.el).bind("dragstop", this.update);
+
     },
 
     render: function(){
       var renderedContent = this.template(this.model.toJSON());
       var $el = $(this.el);
-      $el.css({'top': this.model.get('top'), 'left': this.model.get('left')});
+      $el.css({'top': this.model.get('top'), 'left': this.model.get('left'), 'z-index': this.model.get('z_index')});
       $el.html(renderedContent);
       return this;
     },
@@ -37,18 +44,9 @@
       this.model.save({ title: $title.html(),
                         content: $content.html(),
                         left: $el.css('left'),
-                        top: $el.css('top')
+                        top: $el.css('top'),
+                        z_index: $el.css('z-index')
                       });
-    },
-
-    updateTitle: function(){
-      var $title = this.$('.title');
-      this.model.save({ title: $title.html() });
-    },
-
-    updateContent: function(){
-      var $content = this.$('.editable');
-      this.model.save({ content: $content.html() });
     },
 
     delete: function(){
@@ -60,7 +58,7 @@
     leave: function(){
       this.unbind();
       var note_view = this;
-      $(this.el).fadeOut('slow', function () {
+      $(note_view.el).fadeOut('slow', function () {
         note_view.remove();
       });
     }

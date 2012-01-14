@@ -5,7 +5,8 @@
       "title"   : "",
       "content" : "",
       "left"    : "0px",
-      "top"     : "47px"
+      "top"     : "47px",
+      "z_index" : 0
     }
   });
 

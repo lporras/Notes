@@ -13,7 +13,6 @@
     Views: {},
     init: function(notes_json){
       window.notes = new NotesApp.Collections.Notes(notes_json);
-
       new NotesApp.Routers.Notes();
       if (!Backbone.history.started) {
         Backbone.history.start();

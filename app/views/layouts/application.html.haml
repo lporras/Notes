@@ -16,10 +16,10 @@
 
     %script{type: "text/template", id: "note-template"}
       .toolbar
-        %div{contenteditable: "", class: "title"}
+        %div{contenteditable: "", class: "title"}<
           <%= title %>
         %span.delete{title: "close"} X
-      .editable{contenteditable: ""}
+      .editable{contenteditable: ""}<
         <%= content %>
 
     = yield :javascript

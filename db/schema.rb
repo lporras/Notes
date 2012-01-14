@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120113042240) do
+ActiveRecord::Schema.define(:version => 20120114043505) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120113042240) do
     t.datetime "updated_at"
     t.string   "left",       :default => "0px"
     t.string   "top",        :default => "47px"
+    t.integer  "z_index",    :default => 0
   end
 
 end
