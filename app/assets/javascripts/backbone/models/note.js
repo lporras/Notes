@@ -6,7 +6,7 @@
       "content" : "",
       "left"    : "0px",
       "top"     : "47px",
-      "z_index" : 0
+      "z_index" : 3000
     }
   });
 

@@ -57,6 +57,8 @@
 
     leave: function(){
       this.unbind();
+      this.model.unbind('change', this.render);
+      this.model.unbind('destroy', this.leave);
       var note_view = this;
       $(note_view.el).fadeOut('slow', function () {
         note_view.remove();
@@ -75,7 +77,6 @@
 
     initialize: function(){
       _.bindAll(this, 'render', 'createNew');
-      this.collection.bind('reset', this.render);
     },
 
     render: function(){
