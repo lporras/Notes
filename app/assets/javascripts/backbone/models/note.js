@@ -6,7 +6,7 @@
       "content" : "",
       "pos_x"    : "0px",
       "pos_y"     : "47px",
-      "z_index" : 3000
+      "z_index" : 1
     }
   });
 
