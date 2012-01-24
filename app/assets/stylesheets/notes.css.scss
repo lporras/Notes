@@ -68,7 +68,7 @@ input[type="button"]:hover {
   -moz-box-shadow:2px 2px 2px #999999;
   -webkit-box-shadow:2px 2px 2px #999999;
   box-shadow:2px 2px 2px #999999;
-  position:absolute;
+  position:absolute !important;
 }
 
 .toolbar {
