@@ -21,6 +21,10 @@ group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :test do
   gem 'factory_girl_rails', '>= 1.0.1'
   gem 'json_spec'
