@@ -4,8 +4,8 @@
     defaults: {
       "title"   : "",
       "content" : "",
-      "left"    : "0px",
-      "top"     : "47px",
+      "pos_x"    : "0px",
+      "pos_y"     : "47px",
       "z_index" : 3000
     }
   });

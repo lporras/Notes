@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114043505) do
+ActiveRecord::Schema.define(:version => 20120124044902) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "left",       :default => "0px"
-    t.string   "top",        :default => "47px"
+    t.string   "pos_x",      :default => "0px"
+    t.string   "pos_y",      :default => "47px"
     t.integer  "z_index",    :default => 0
   end
 

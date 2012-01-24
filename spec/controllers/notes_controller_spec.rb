@@ -20,7 +20,7 @@ describe NotesController do
 
     it "should assign to @notes all notes" do
       get :index
-      assigns(:notes).should == Note.select("id, title, content, left, top")
+      assigns(:notes).should == Note.select("id, title, content, pos_x, pos_y, z_index")
     end
 
     it "should render index template" do
@@ -32,7 +32,7 @@ describe NotesController do
       it "should assign to @notes all notes as json" do
         get :index, format: :json
         assigns(:notes).should_not be_nil
-        response.body.should be_json_eql( Note.select("id, title, content, left, top").to_json )
+        response.body.should be_json_eql( Note.select("id, title, content, pos_x, pos_y, z_index").to_json )
       end
     end
   end

@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @notes = Note.select("id, title, content, left, top, z_index")
+    @notes = Note.select("id, title, content, pos_x, pos_y, z_index")
     respond_with(@notes) do |format|
       format.json { render json: @notes }
     end

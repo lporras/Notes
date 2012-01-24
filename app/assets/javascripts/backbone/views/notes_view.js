@@ -32,7 +32,7 @@
     render: function(){
       var renderedContent = this.template(this.model.toJSON());
       var $el = $(this.el);
-      $el.css({'top': this.model.get('top'), 'left': this.model.get('left'), 'z-index': this.model.get('z_index')});
+      $el.css({'top': this.model.get('pos_y'), 'left': this.model.get('pos_x'), 'z-index': this.model.get('z_index')});
       $el.html(renderedContent);
       return this;
     },
@@ -43,8 +43,8 @@
       var $content = this.$('.editable');
       this.model.save({ title: $title.html(),
                         content: $content.html(),
-                        left: $el.css('left'),
-                        top: $el.css('top'),
+                        pos_x: $el.css('left'),
+                        pos_y: $el.css('top'),
                         z_index: $el.css('z-index')
                       });
     },

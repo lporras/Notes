@@ -1,10 +1,10 @@
 class Note < ActiveRecord::Base
 
-  attr_accessible :content, :title, :top, :left, :z_index
+  attr_accessible :content, :title, :pos_x, :pos_y, :z_index
 
   def to_json(options = {})
     if options.empty?
-      super(:only => [:id, :content, :title, :left, :top, :z_index])
+      super(:only => [:id, :content, :title, :pos_x, :pos_y, :z_index])
     else
       super
     end
