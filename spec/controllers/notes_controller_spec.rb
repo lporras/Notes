@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe NotesController do
   before do
-    WebMock.disable_net_connect!
-    WebMock.reset!
-    @pusher_url_regexp = %r{/apps/#{Pusher.app_id}/channels/notes/events}
-    WebMock.stub_request(:post, @pusher_url_regexp).to_return(:status => 202)
+    stub_or_flush_pusher_requests
   end
 
   describe "Routes" do
