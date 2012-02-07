@@ -5,6 +5,7 @@ gem 'haml-rails', '>= 0.3.4'
 gem 'jquery-rails', '>= 0.2.7'
 gem 'rails-backbone', '0.5.3'
 gem 'backbone-support'
+gem 'pusher'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
