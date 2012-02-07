@@ -18,11 +18,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
-end
-
-group :production do
-  gem 'pg'
+  gem 'pry'
 end
 
 group :test do
