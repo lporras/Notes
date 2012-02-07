@@ -27,4 +27,5 @@ group :test do
   gem 'json_spec'
   gem 'simplecov', '0.5.4'
   gem 'turn', '0.8.2', :require => false
+  gem 'webmock'
 end
