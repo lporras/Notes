@@ -65,5 +65,23 @@ describe Note do
         end
       end
     end
+
+    describe "#after_destroy" do
+      it "sends appropiate push notifications to the pusher service" do
+        note = Factory(:note)
+        stub_or_flush_pusher_requests
+        note.destroy
+        WebMock.should have_requested(:post, @pusher_url_regexp).with do |req|
+                query_hash = req.uri.query_values
+                query_hash["name"].should == 'destroyed'
+                query_hash["auth_key"].should == Pusher.key
+                query_hash["auth_timestamp"].should_not be_nil
+                p query_hash
+                parsed = MultiJson.decode(req.body)
+                parsed.should == note.to_json
+                req.headers['Content-Type'].should == 'application/json'
+        end
+      end
+    end
   end
 end

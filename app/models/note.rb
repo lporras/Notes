@@ -4,6 +4,7 @@ class Note < ActiveRecord::Base
 
   after_create :track_creation
   after_update :track_update
+  after_destroy :track_destroy
 
   def to_json(options = {})
     if options.empty?
@@ -21,5 +22,9 @@ class Note < ActiveRecord::Base
 
   def track_update
     Pusher['notes'].trigger!('updated', to_json)
+  end
+
+  def track_destroy
+    Pusher['notes'].trigger!('destroyed', to_json)
   end
 end
