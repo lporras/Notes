@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Note do
+
   before do
     stub_or_flush_pusher_requests
   end
@@ -32,19 +33,18 @@ describe Note do
   end
 
   describe "Callbacks" do
-    describe "#after_save" do
+
+    describe "#after_create" do
       it "sends appropiate push notifications to the pusher service" do
         note = Factory(:note)
-        WebMock.should have_requested(:post, @pusher_url_regexp).with do |req|
-                query_hash = req.uri.query_values
-                query_hash["name"].should == 'created'
-                query_hash["auth_key"].should == Pusher.key
-                query_hash["auth_timestamp"].should_not be_nil
-
-                parsed = MultiJson.decode(req.body)
-                parsed.should == note.to_json
-                req.headers['Content-Type'].should == 'application/json'
-        end
+        WebMock.should have_requested(:post, @pusher_url_regexp).with{ |req|
+          query_hash = req.uri.query_values
+          query_hash["name"].should == 'created'
+          query_hash["auth_key"].should == Pusher.key
+          query_hash["auth_timestamp"].should_not be_nil
+          req.body.should == note.to_json
+          req.headers['Content-Type'].should == 'application/json'
+        }
       end
     end
 
@@ -53,16 +53,14 @@ describe Note do
         note = Factory(:note)
         stub_or_flush_pusher_requests
         note.update_attribute(:title, "new title")
-        WebMock.should have_requested(:post, @pusher_url_regexp).with do |req|
-                query_hash = req.uri.query_values
-                query_hash["name"].should == 'updated'
-                query_hash["auth_key"].should == Pusher.key
-                query_hash["auth_timestamp"].should_not be_nil
-                p query_hash
-                parsed = MultiJson.decode(req.body)
-                parsed.should == note.to_json
-                req.headers['Content-Type'].should == 'application/json'
-        end
+        WebMock.should have_requested(:post, @pusher_url_regexp).with{ |req|
+          query_hash = req.uri.query_values
+          query_hash["name"].should == 'updated'
+          query_hash["auth_key"].should == Pusher.key
+          query_hash["auth_timestamp"].should_not be_nil
+          req.body.should == note.to_json
+          req.headers['Content-Type'].should == 'application/json'
+        }
       end
     end
 
@@ -71,16 +69,14 @@ describe Note do
         note = Factory(:note)
         stub_or_flush_pusher_requests
         note.destroy
-        WebMock.should have_requested(:post, @pusher_url_regexp).with do |req|
-                query_hash = req.uri.query_values
-                query_hash["name"].should == 'destroyed'
-                query_hash["auth_key"].should == Pusher.key
-                query_hash["auth_timestamp"].should_not be_nil
-                p query_hash
-                parsed = MultiJson.decode(req.body)
-                parsed.should == note.to_json
-                req.headers['Content-Type'].should == 'application/json'
-        end
+        WebMock.should have_requested(:post, @pusher_url_regexp).with{ |req|
+          query_hash = req.uri.query_values
+          query_hash["name"].should == 'destroyed'
+          query_hash["auth_key"].should == Pusher.key
+          query_hash["auth_timestamp"].should_not be_nil
+          req.body.should == note.to_json
+          req.headers['Content-Type'].should == 'application/json'
+        }
       end
     end
   end
