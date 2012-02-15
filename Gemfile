@@ -5,6 +5,7 @@ gem 'haml-rails', '>= 0.3.4'
 gem 'jquery-rails', '>= 0.2.7'
 gem 'rails-backbone', '0.5.3'
 gem 'backbone-support'
+gem 'pusher'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -18,7 +19,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'pry'
 end
 
 group :production do
@@ -30,4 +31,5 @@ group :test do
   gem 'json_spec'
   gem 'simplecov', '0.5.4'
   gem 'turn', '0.8.2', :require => false
+  gem 'webmock'
 end

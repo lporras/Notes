@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe NotesController do
+  before do
+    stub_or_flush_pusher_requests
+  end
+
   describe "Routes" do
     it {{get: "/notes"}.should route_to(controller: "notes", action: "index")}
     it {{post: "/notes"}.should route_to(controller: "notes", action: "create")}

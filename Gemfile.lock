@@ -35,11 +35,12 @@ GEM
       activesupport (= 3.1.3)
     activesupport (3.1.3)
       multi_json (~> 1.0)
+    addressable (2.2.6)
     ansi (1.4.1)
-    archive-tar-minitar (0.5.2)
     arel (2.2.1)
     backbone-support (0.0.1)
     builder (3.0.0)
+    coderay (1.0.5)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -47,7 +48,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
-    columnize (0.3.5)
+    crack (0.3.1)
     diff-lcs (1.1.3)
     ejs (1.0.0)
     erubis (2.7.0)
@@ -74,16 +75,23 @@ GEM
     json_spec (0.7.0)
       multi_json (~> 1.0.0)
       rspec (~> 2.0)
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.7.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
     pg (0.12.2)
     polyglot (0.3.3)
+    pry (0.9.8.1)
+      coderay (~> 1.0.5)
+      method_source (~> 0.7)
+      slop (>= 2.4.3, < 3)
+    pusher (0.9.2)
+      multi_json (~> 1.0)
+      ruby-hmac (~> 0.4.0)
+      signature (~> 0.1.2)
     rack (1.3.5)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -128,16 +136,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.7.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
+    ruby-hmac (0.4.0)
     sass (3.1.11)
     sass-rails (3.1.5)
       actionpack (~> 3.1.0)
@@ -145,10 +144,13 @@ GEM
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
     shoulda (2.11.3)
+    signature (0.1.2)
+      ruby-hmac
     simplecov (0.5.4)
       multi_json (~> 1.0.3)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
+    slop (2.4.4)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -165,6 +167,9 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    webmock (1.7.10)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
 
 PLATFORMS
   ruby
@@ -178,10 +183,11 @@ DEPENDENCIES
   jquery-rails (>= 0.2.7)
   json_spec
   pg
+  pry
+  pusher
   rails (= 3.1.3)
   rails-backbone (= 0.5.3)
   rspec-rails (>= 2.5.0)
-  ruby-debug19
   sass-rails (~> 3.1.5)
   shoulda
   shoulda-matchers!
@@ -189,3 +195,4 @@ DEPENDENCIES
   sqlite3
   turn (= 0.8.2)
   uglifier (>= 1.0.3)
+  webmock

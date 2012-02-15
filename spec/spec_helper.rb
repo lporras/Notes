@@ -7,6 +7,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda-matchers'
 require 'rspec/autorun'
+require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -34,4 +35,11 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  def stub_or_flush_pusher_requests
+    WebMock.disable_net_connect!
+    WebMock.reset!
+    @pusher_url_regexp = %r{/apps/#{Pusher.app_id}/channels/notes/events}
+    WebMock.stub_request(:post, @pusher_url_regexp).to_return(:status => 202)
+  end
 end
