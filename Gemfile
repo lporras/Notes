@@ -6,6 +6,7 @@ gem 'jquery-rails', '>= 0.2.7'
 gem 'rails-backbone', '>= 0.5.3'
 gem 'backbone-support', '>= 0.2.0'
 gem 'pusher', '0.9.2'
+gem 'newrelic_rpm', '3.3.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
