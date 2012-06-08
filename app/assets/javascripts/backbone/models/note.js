@@ -1,6 +1,7 @@
 (function($) {
 
   NotesApp.Models.Note = Backbone.Model.extend({
+    urlRoot: '/notes',
     defaults: {
       "title"   : "",
       "content" : "",

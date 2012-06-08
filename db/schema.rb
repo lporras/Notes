@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20120124044902) do
   create_table "notes", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "pos_x",      :default => "0px"
     t.string   "pos_y",      :default => "47px"
     t.integer  "z_index",    :default => 0

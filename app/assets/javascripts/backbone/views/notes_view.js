@@ -56,7 +56,6 @@
     },
 
     leave: function(){
-      this.unbind();
       this.model.unbind('change', this.render);
       this.model.unbind('destroy', this.leave);
       var note_view = this;
