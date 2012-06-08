@@ -3,7 +3,7 @@
 #rvm use ruby-1.9.2-p290@invoice-tracker
 
 ruby_version="jruby-1.6.7"
-gemset_name="notes"
+gemset_name="torquebox"
 
 ok="\033[10;32m"
 warn="\033[1;31m"

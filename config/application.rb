@@ -17,7 +17,10 @@ end
 
 module Notes
   class Application < Rails::Application
-  
+    # Use TorqueBox::Infinispan::Cache for the Rails cache store
+    config.cache_store = :torque_box_store
+
+
     config.generators do |g|
       g.test_framework :rspec, :fixture => true, :views => false
       g.integration_tool :rspec, :fixture => true, :views => true
