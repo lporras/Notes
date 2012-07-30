@@ -20,12 +20,11 @@ group :development, :test do
   gem 'rspec-rails', '>= 2.5.0'
   gem 'shoulda'
   gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
-  gem 'jdbc-sqlite3'
-  gem 'activerecord-jdbcsqlite3-adapter'
 end
 
-group :production do
-  gem 'pg'
+group :production, :development do
+  gem 'jdbc-postgres'
+  gem 'activerecord-jdbcpostgresql-adapter'
 end
 
 group :test do
@@ -34,4 +33,6 @@ group :test do
   gem 'simplecov', '0.5.4'
   gem 'turn', '0.8.2', :require => false
   gem 'webmock'
+  gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbcsqlite3-adapter'
 end
