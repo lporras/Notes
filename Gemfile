@@ -9,9 +9,12 @@ gem 'jruby-openssl'
 gem 'torquebox-rake-support', '2.0.3'
 gem 'torquebox', '2.0.3'
 
+gem 'puma'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'jquery-ui-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -20,6 +23,8 @@ group :development, :test do
   gem 'rspec-rails', '>= 2.5.0'
   gem 'shoulda'
   gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
+  gem 'ruby-debug-base'
+  gem 'ruby-debug'
 end
 
 group :production, :development do

@@ -79,7 +79,7 @@
     },
 
     render: function(){
-      var $board = $("#board");
+      var $board = this.$("#board");
       $board.empty();
       this.collection.each(function(note){
         var noteView = new NotesApp.Views.NoteView({model: note});

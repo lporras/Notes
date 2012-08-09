@@ -12,8 +12,6 @@
     },
 
     index: function(){
-      var $board = $("#board");
-      $board.empty();
       this.notesView.render()
     }
   });

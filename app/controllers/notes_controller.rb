@@ -7,7 +7,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    debugger
     @note = Note.create(params[:note])
     respond_with @note
   end
