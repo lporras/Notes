@@ -6,8 +6,8 @@ gem 'jquery-rails', '>= 0.2.7'
 gem 'rails-backbone', '>= 0.5.3'
 gem 'backbone-support', '>= 0.2.0'
 gem 'jruby-openssl'
-gem 'torquebox-rake-support', '2.0.3'
-gem 'torquebox', '2.0.3'
+gem 'torquebox-rake-support', '2.1.2'
+gem 'torquebox', '2.1.2'
 
 gem 'puma'
 

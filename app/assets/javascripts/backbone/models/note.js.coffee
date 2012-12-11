@@ -8,6 +8,10 @@ class NotesApp.Models.Note extends Backbone.Model
     "pos_y"     : "47px"
     "z_index"   : 1
 
+  anyChange: (options) ->
+    options.id = @id
+    return !( _.isEqual(options, this.attributes) )
+
 class NotesApp.Collections.Notes extends Backbone.Collection
   model: NotesApp.Models.Note
 

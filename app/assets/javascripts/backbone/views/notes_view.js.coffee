@@ -31,27 +31,23 @@ class NotesApp.Views.NoteView extends Backbone.View
     return this
 
   update: =>
+    attributes = @getPossibleAttributes()
+    if @model.anyChange(attributes)
+      @model.save(attributes)
+
+  getPossibleAttributes: ->
     $title = @$('.title')
     $content = @$('.editable')
-    @model.save
-      title   : $title.html()
-      content : $content.html()
-      pos_x   : @$el.css('left')
-      pos_y   : @$el.css('top')
-      z_index : @$el.css('z-index')
+    return {title: $title.html(), content: $content.html(), pos_x: @$el.css('left'), pos_y: @$el.css('top'), z_index : parseInt(@$el.css('z-index'))}
 
   set: =>
-    $title = @$('.title')
-    $content = @$('.editable')
-    @model.set
-      title   : $title.html()
-      content : $content.html()
-      pos_x   : @$el.css('left')
-      pos_y   : @$el.css('top')
-      z_index : @$el.css('z-index')
+    @model.set @getPossibleAttributes()
 
   delete: =>
-    @model.destroy() if confirm "Are you sure you want to delete this Note?"
+    unless @model.isNew()
+     @model.destroy() if confirm "Are you sure you want to delete this Note?"
+    else
+      @model.destroy()
 
   leave: =>
     @model.unbind 'change', @render
@@ -79,4 +75,3 @@ class NotesApp.Views.NotesView extends Backbone.View
     noteView = new NotesApp.Views.NoteView(model: new_note)
     @collection.add(new_note)
     @$("#board").append noteView.render().el
-    new_note.save()
